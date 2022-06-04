@@ -7,7 +7,7 @@ print('  Veel Speelplezier!')
 
 woordenlijst = ['informatiekunde','informatica','spelletje','aardigheidje','scholier','fotografie','waardebepaling','specialiteit','verzekering','universiteit','heesterperk']
 
-pogingen = 0 #Hoe vaak je geprobeerd hebt
+
 
 time.sleep(1)
              
@@ -21,9 +21,9 @@ if uitleg == 'NEE':
 gebruikersnaam = input('\n Vul hier je gebruikersnaam in:\n') #vul je gebruikersnaam in
 print('\nGoed om je te zien,', gebruikersnaam) 
 
-spel = input('Wil je een nieuw spel beginnen? JA / NEE\n')
-if spel == 'JA':
-
+def galgje():
+  pogingen = 0 #Hoe vaak je geprobeerd hebt
+  
   kiezen = random.choice(woordenlijst) #Kiezen is het random gekozen woord door de computer
   woord = len(kiezen) * '-'
   print(f'\n{woord}')
@@ -33,18 +33,22 @@ if spel == 'JA':
       print('Gefeliciteerd, je hebt het woord geraden!')
     raden = input('Type een letter\n')[0]
     if raden in kiezen:
-      for i in range(len(kiezen)):
-        if kiezen[i] == raden:
+       for i in range(len(kiezen)):
+         if kiezen[i] == raden:
           letterlijst = list(woord)
           letterlijst[i] = raden 
-          woord = ''.join(letterlijst)
-         
+          woord = ''.join(letterlijst)        
     else:
       pogingen += 1
-    print(woord)    
-      
-    
-  
-if spel == 'NEE':
-  print('\nTot de volgende keer!')
-  quit()
+    print(woord) 
+
+def spelen():
+  while True:
+    spel = input('Wil je een nieuw spel beginnen? JA / NEE\n')
+    if spel.upper() == 'JA':
+      galgje()
+    else:
+      print('\nTot de volgende keer!')
+      quit()
+spelen()
+        
