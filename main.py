@@ -25,7 +25,7 @@ def galgje(): #Functie voor het spel zelf
   
   kiezen = random.choice(woordenlijst) #Kiezen is het random gekozen woord door de computer
   woord = len(kiezen) * '-' #Zet het aantal streepjes (_) neer t.o.v. het aantal letters van het woord
-  print(f'\n{woord}')
+  print(f'\n\n{woord}')
   while pogingen < 5: #Controle of je niet te veel pogingen hebt (max 5)
     if kiezen == woord: # Is wat je hebt geraden gelijk aan het woord?
       print('\nGefeliciteerd, je hebt het woord geraden!')   
@@ -46,6 +46,21 @@ def galgje(): #Functie voor het spel zelf
     if pogingen >= 5:
       print(f'\nHelaas, je beurten zijn op\n Het woord was: {kiezen}')
 
+    if pogingen == 1:
+      print('\n\nGalgje 1\n\n') #Print het eerste plaatje, wanneer je 1 foute poging hebt
+
+    if pogingen == 2:
+      print('\n\nGalgje 2\n\n') #Print het eerste plaatje, wanneer je 2 foute poging hebt
+
+    if pogingen == 3:
+      print('\n\nGalgje 3\n\n') #Print het eerste plaatje, wanneer je 3 foute poging hebt
+
+    if pogingen == 4:
+      print('\n\nGalgje 4\n\n') #Print het eerste plaatje, wanneer je 4 foute poging hebt
+
+    if pogingen == 5:
+      print('\n\nGalgje 5\n\n') #Print het eerste plaatje, wanneer je 5 foute poging hebt
+ 
 def spelen(): #Functie voor herhalen van het spel
   while True:
     spel = input('\nWil je een nieuw spel starten? JA / NEE\n')
