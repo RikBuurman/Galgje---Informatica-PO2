@@ -2,13 +2,11 @@ import time #Importeren van tijd, voor het tijdelijk 'op de wacht zetten' van co
 import random #Importeren van random, zodat de code random een woord uit de lijst kan selecteren
 import string
 
-
 print('\t\t\tGemaakt door Tygo de Wijn en Rik Buurman\n\n\n')
 print('Welkom bij Galgje!') #Spelintroductie
 print('  Veel Speelplezier!') 
 
 woordenlijst = ['informatiekunde','informatica','spelletje','aardigheidje','scholier','fotografie','waardebepaling','specialiteit','verzekering','universiteit','heesterperk'] #Lijst met woordjes waaruit de computer later random kiest
-
 
 time.sleep(1) #Wacht 1 seconde
              
@@ -44,8 +42,6 @@ def galg_print(poging): #Functie voor de plaatjes van galgje
   if poging == 5:
     return galgjes[4] 
 
-
-
 def galgje(): #Functie voor het spel zelf
   pogingen = 0 #Hoe vaak je geprobeerd hebt
   foute_letters = []
@@ -55,6 +51,7 @@ def galgje(): #Functie voor het spel zelf
   print(f'\n\n{woord}')
   while pogingen < 5: #Controle of je niet te veel pogingen hebt (max 5)
     if kiezen == woord: # Is wat je hebt geraden gelijk aan het woord?
+      time.sleep(1)
       print('\nGefeliciteerd, je hebt het woord geraden!')     
       print('--------------------------------------------------------------')
       break 
@@ -73,28 +70,35 @@ def galgje(): #Functie voor het spel zelf
         foute_letters.sort()
         pogingen += 1 #Als de letter niet aanwezig is, gaat er 1 poging bij     
     else:
+      time.sleep(1)
       print('\nInvoer is niet correct (Gebruik alleen letters uit het alfabet; Maximaal 1 letter)\n')
       pogingen += 1
 
     
     print(woord) 
-    print(f'\nGeprobeeerde Letters: {foute_letters}\n')
+    time.sleep(0.5) #Code wacht een halve seconde
+    print(f'\nGeprobeeerde Foute Letters: {foute_letters}\n')
 
     if pogingen == 1: 
+      time.sleep(0.5) #Code wacht een halve seconde
       print(galg_print(pogingen)) #Print het plaatje als er 1 foute poging gedaan is
       
     if pogingen == 2:
+      time.sleep(0.5) #Code wacht een halve seconde
       print(galg_print(pogingen)) #Print het bijbehorende plaatje als er 2 foute pogingen gedaan zijn
       
     if pogingen == 3:
+      time.sleep(0.5) #Code wacht een halve seconde
       print(galg_print(pogingen)) #Print het bijbehorende plaatje als er 3 foute pogingen gedaan zijn
       
     if pogingen == 4:
+      time.sleep(0.5) #Code wacht een halve seconde
       print(galg_print(pogingen)) #Print het bijbehorende plaatje als er 4 foute pogingen gedaan zijn 
       
     if pogingen == 5:
+      time.sleep(1) #Code wacht 1 seconde
       print(galg_print(pogingen)) #Print het eindeplaatje als er 5 foute pogingen gedaan zijn
-      print(f'\nHelaas, je beurten zijn op\n Het woord was: {kiezen}')
+      print(f'\nHelaas, je beurten zijn op\n Het woord was: {kiezen}') #Verloren-bericht, aangeven van het woord
 
 def spelen(): #Functie voor herhalen van het spel
   while True:
