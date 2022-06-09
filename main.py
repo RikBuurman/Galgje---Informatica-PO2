@@ -1,9 +1,9 @@
-import time
-import random
+import time #Importeren van tijd, voor het tijdelijk 'op de wacht zetten' van code
+import random #Importeren van random, zodat de code random een woord uit de lijst kan selecteren
 
 print('\t\t\tGemaakt door Tygo de Wijn en Rik Buurman\n\n\n')
-print('Welkom bij Galgje!')
-print('  Veel Speelplezier!')
+print('Welkom bij Galgje!') #Spelintroductie
+print('  Veel Speelplezier!') 
 
 woordenlijst = ['informatiekunde','informatica','spelletje','aardigheidje','scholier','fotografie','waardebepaling','specialiteit','verzekering','universiteit','heesterperk'] #Lijst met woordjes waaruit de computer later random kiest
 
@@ -12,13 +12,37 @@ time.sleep(1) #Wacht 1 seconde
              
 uitleg = input('\nWil je een uitleg over dit spel? JA / NEE\n') #wil je uitleg?
 if uitleg == 'JA':
-  print('\nOké, hierbij  de uileg:\n De bedoeling is dat je een woord moet raden met alle letters uit het alfabet, als de letter \n in het woord voor komt dan wordt de letter op de goede plek gezet en dan mag je opnieuw proberen \nen als de letter er niet in zit krijg je 5 kansen tot dat je dood bent ')
+  print('\nOké, hierbij  de uileg:\n De bedoeling is dat je een woord moet raden met alle letters uit het alfabet, als de letter \n in het woord voor komt dan wordt de letter op de goede plek gezet en dan mag je opnieuw proberen \nen als de letter er niet in zit krijg je 5 kansen tot dat je dood bent ') #Uitleg over galgje
 
 if uitleg == 'NEE': 
   print('\n Fijn om te horen dat je goed bent voorbereid, laten we beginnen met het spel! \n')
 
 gebruikersnaam = input('\n Vul hier je gebruikersnaam in:\n') #vul je gebruikersnaam in
 print('\nGoed om je te zien,', gebruikersnaam) 
+
+def galg_print(poging): #Functie voor de plaatjes van galgje 
+  galgjes = ['________\n|      |\n|      \n|     \n|      \n|     \n|______\n', #Plaatje bij 1 poging
+             '________\n|      |\n|      o\n|     \n|      \n|     \n|______\n', #Plaatje bij 2 pogingen
+             '________\n|      |\n|      o\n|     \ /\n|      \n|     \n|______\n', #Plaatje bij 3 pogingen
+             '________\n|      |\n|      o\n|     \ /\n|      |\n|     \n|______\n', #Plaatje bij 4 pogingen
+             '________\n|      |\n|      o\n|     \ /\n|      |\n|     / \\\n|______\n'] #Plaatje bij 5 pogingen
+  
+  if poging == 1:
+    return galgjes[0]  
+    
+  if poging == 2:
+    return galgjes[1]
+
+  if poging == 3:
+    return galgjes[2]
+
+  if poging == 4:
+    return galgjes[3]
+
+  if poging == 5:
+    return galgjes[4] 
+
+
 
 def galgje(): #Functie voor het spel zelf
   pogingen = 0 #Hoe vaak je geprobeerd hebt
@@ -28,7 +52,7 @@ def galgje(): #Functie voor het spel zelf
   print(f'\n\n{woord}')
   while pogingen < 5: #Controle of je niet te veel pogingen hebt (max 5)
     if kiezen == woord: # Is wat je hebt geraden gelijk aan het woord?
-      print('\nGefeliciteerd, je hebt het woord geraden!')   
+      print('\nGefeliciteerd, je hebt het woord geraden!')     
       print('--------------------------------------------------------------')
       break 
 
@@ -43,24 +67,23 @@ def galgje(): #Functie voor het spel zelf
       pogingen += 1 #Als de letter niet aanwezig is, gaat er 1 poging bij
     print(woord) 
 
-    if pogingen >= 5:
+
+    if pogingen == 1: 
+      print(galg_print(pogingen)) #Print het plaatje als er 1 foute poging gedaan is
+      
+    if pogingen == 2:
+      print(galg_print(pogingen)) #Print het bijbehorende plaatje als er 2 foute pogingen gedaan zijn
+      
+    if pogingen == 3:
+      print(galg_print(pogingen)) #Print het bijbehorende plaatje als er 3 foute pogingen gedaan zijn
+      
+    if pogingen == 4:
+      print(galg_print(pogingen)) #Print het bijbehorende plaatje als er 4 foute pogingen gedaan zijn 
+      
+    if pogingen == 5:
+      print(galg_print(pogingen)) #Print het eindeplaatje als er 5 foute pogingen gedaan zijn
       print(f'\nHelaas, je beurten zijn op\n Het woord was: {kiezen}')
 
-    if pogingen == 1:
-      print('\n\nGalgje 1\n\n') #Print het eerste plaatje, wanneer je 1 foute poging hebt
-
-    if pogingen == 2:
-      print('\n\nGalgje 2\n\n') #Print het eerste plaatje, wanneer je 2 foute poging hebt
-
-    if pogingen == 3:
-      print('\n\nGalgje 3\n\n') #Print het eerste plaatje, wanneer je 3 foute poging hebt
-
-    if pogingen == 4:
-      print('\n\nGalgje 4\n\n') #Print het eerste plaatje, wanneer je 4 foute poging hebt
-
-    if pogingen == 5:
-      print('\n\nGalgje 5\n\n') #Print het eerste plaatje, wanneer je 5 foute poging hebt
- 
 def spelen(): #Functie voor herhalen van het spel
   while True:
     spel = input('\nWil je een nieuw spel starten? JA / NEE\n')
