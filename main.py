@@ -12,11 +12,16 @@ time.sleep(1) #Wacht 1 seconde
              
 uitleg = input('\nWil je een uitleg over dit spel? JA / NEE\n') #wil je uitleg?
 if uitleg == 'JA':
-  print('\nOké, hierbij  de uileg:\n De bedoeling is dat je een woord moet raden met alle letters uit het alfabet, als de letter \n in het woord voor komt dan wordt de letter op de goede plek gezet en dan mag je opnieuw proberen \nen als de letter er niet in zit krijg je 5 kansen tot dat je dood bent ') #Uitleg over galgje
+  time.sleep(0.5)
+  print('\nOké, hierbij de uileg:\n De bedoeling van dit spel is dat je een woord raadt, een woord dat de computer kiest. \n Je hebt alle letters uit het alfabet tot je beschikking, elke poging kan je 1 letter proberen te raden.\n Wanneer de letter die je gokt aanwezig is in het woord, ga je verder totdat je het woord volledig hebt geraden. \n Je hebt 5 pogingen, elke letter die niet aanwezig is in het woord, zorgt voor -1 poging.')
+  print('\n Hopelijk is alles duidelijk nu, laten we verdergaan met het kiezen van je gebruikersnaam!')
+ #Uitleg over galgje
 
-if uitleg == 'NEE': 
-  print('\n Fijn om te horen dat je goed bent voorbereid, laten we beginnen met het spel! \n')
+if uitleg == 'NEE':
+  time.sleep(0.5)
+  print('\n Fijn om te horen dat je goed bent voorbereid, laten we beginnen met je gebruikersnaam! \n')
 
+time.sleep(0.5)
 gebruikersnaam = input('\n Vul hier je gebruikersnaam in:\n') #vul je gebruikersnaam in
 print('\nGoed om je te zien,', gebruikersnaam) 
 
