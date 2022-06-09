@@ -1,5 +1,7 @@
 import time #Importeren van tijd, voor het tijdelijk 'op de wacht zetten' van code
 import random #Importeren van random, zodat de code random een woord uit de lijst kan selecteren
+import string
+
 
 print('\t\t\tGemaakt door Tygo de Wijn en Rik Buurman\n\n\n')
 print('Welkom bij Galgje!') #Spelintroductie
@@ -46,6 +48,7 @@ def galg_print(poging): #Functie voor de plaatjes van galgje
 
 def galgje(): #Functie voor het spel zelf
   pogingen = 0 #Hoe vaak je geprobeerd hebt
+  foute_letters = []
   
   kiezen = random.choice(woordenlijst) #Kiezen is het random gekozen woord door de computer
   woord = len(kiezen) * '-' #Zet het aantal streepjes (_) neer t.o.v. het aantal letters van het woord
@@ -56,17 +59,26 @@ def galgje(): #Functie voor het spel zelf
       print('--------------------------------------------------------------')
       break 
 
-    raden = input('Type een letter\n')[0]
-    if raden in kiezen: #Is de letter poging aanwezig in het woord?
-       for i in range(len(kiezen)):
-         if kiezen[i] == raden:
-          letterlijst = list(woord)
-          letterlijst[i] = raden 
-          woord = ''.join(letterlijst)        
+    raden = input('Type een letter\n').lower()
+    alfabet = string.ascii_lowercase
+    if raden in alfabet and len(raden) == 1:
+      if raden in kiezen: #Is de letter poging aanwezig in het woord?
+        for i in range(len(kiezen)):
+          if kiezen[i] == raden:
+            letterlijst = list(woord)
+            letterlijst[i] = raden 
+            woord = ''.join(letterlijst)  
+      else:
+        foute_letters.append(raden)
+        foute_letters.sort()
+        pogingen += 1 #Als de letter niet aanwezig is, gaat er 1 poging bij     
     else:
-      pogingen += 1 #Als de letter niet aanwezig is, gaat er 1 poging bij
-    print(woord) 
+      print('\nInvoer is niet correct (Gebruik alleen letters uit het alfabet; Maximaal 1 letter)\n')
+      pogingen += 1
 
+    
+    print(woord) 
+    print(f'\nGeprobeeerde Letters: {foute_letters}\n')
 
     if pogingen == 1: 
       print(galg_print(pogingen)) #Print het plaatje als er 1 foute poging gedaan is
