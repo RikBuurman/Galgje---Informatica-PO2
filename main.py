@@ -13,7 +13,7 @@ time.sleep(1) #Wacht 1 seconde
 uitleg = input('\nWil je een uitleg over dit spel? JA / NEE\n') #wil je uitleg?
 if uitleg == 'JA':
   time.sleep(0.5)
-  print('\nOké, hierbij de uileg:\n De bedoeling van dit spel is dat je een woord raadt, een woord dat de computer kiest. \n Je hebt alle letters uit het alfabet tot je beschikking, elke poging kan je 1 letter proberen te raden.\n Wanneer de letter die je gokt aanwezig is in het woord, ga je verder totdat je het woord volledig hebt geraden. \n Je hebt 5 pogingen, elke letter die niet aanwezig is in het woord, zorgt voor -1 poging.')
+  print('\nOké, hierbij de uileg:\n De bedoeling van dit spel is dat je een woord raadt, een woord dat de computer kiest. \n Je hebt alle letters uit het alfabet tot je beschikking, elke poging kan je 1 letter \n proberen te raden.\n Wanneer de letter die je gokt aanwezig is in het woord, ga je verder totdat je het woord \n volledig hebt geraden. \n Je hebt 5 pogingen, elke letter die niet aanwezig is in het woord, zorgt voor -1 poging. \n Al zijn al je pogingen op, ben je af en kan je helemaal opnieuw beginnen.')
   print('\n Hopelijk is alles duidelijk nu, laten we verdergaan met het kiezen van je gebruikersnaam!')
  #Uitleg over galgje
 
@@ -82,7 +82,7 @@ def galgje(): #Functie voor het spel zelf
     
     print(woord) 
     time.sleep(0.5) #Code wacht een halve seconde
-    print(f'\nGeprobeeerde Foute Letters: {foute_letters}\n')
+    print(f'\nGeprobeeerde foute Letters: {foute_letters}\n')
 
     if pogingen == 1: 
       time.sleep(0.5) #Code wacht een halve seconde
